@@ -158,15 +158,17 @@ Qubits per C participant:
 
 ### Execution Time & Memory Estimates
 
-| Size | Qubits | Non-verbose | Verbose | Save to File | RAM Usage |
-|------|--------|-------------|---------|--------------|-----------|
-| 3×3  | 9      | ~2 sec      | ~3 sec  | ~4 sec       | ~300 MB   |
-| 5×5  | 25     | ~5 sec      | ~8 sec  | ~10 sec      | ~350 MB   |
-| 10×10| 100    | ~20 sec     | ~35 sec | ~40 sec      | ~500 MB   |
-| 15×15| 225    | ~45 sec     | ~90 sec | ~100 sec     | ~800 MB   |
-| 20×20| 400    | ~80 sec     | ~180 sec| ~200 sec     | ~1.5 GB   |
+| Size | Qubits | Non-verbose | Verbose+Save | RAM Usage | Actual (M1/M2) |
+|------|--------|-------------|--------------|-----------|----------------|
+| 3×3  | 9      | ~1 sec      | ~2 sec       | ~300 MB   | ~2 sec         |
+| 5×5  | 25     | ~2 sec      | ~3 sec       | ~350 MB   | ~3 sec         |
+| 10×10| 100    | ~5 sec      | ~7 sec       | ~500 MB   | ~7 sec         |
+| 15×15| 225    | ~8 sec      | ~10 sec      | ~800 MB   | ~10 sec        |
+| 20×20| 400    | ~9 sec      | ~11 sec      | ~1.5 GB   | **11.4 sec** ✓ |
 
-*Times and memory usage are approximate and depend on hardware*
+*Times measured on Apple M1/M2. Older hardware may be 2-3x slower.*
+
+**Actual measurement (20×20):** 11.368 seconds (verbose+save mode)
 
 **Memory Breakdown:**
 - **Base overhead:** ~200-300 MB (Python + Qiskit/Aer)
